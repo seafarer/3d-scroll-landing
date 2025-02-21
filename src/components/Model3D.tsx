@@ -3,10 +3,11 @@ import { useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { useGLTF } from '@react-three/drei';
 import { useSpring, animated } from '@react-spring/three';
+import * as THREE from 'three';
 
 export function Model3D({ scroll = 0 }) {
-  const meshRef = useRef();
-  const { nodes } = useGLTF("/skull.glb"); // You'll need to add your 3D model file
+  const meshRef = useRef<THREE.Mesh>(null);
+  const { nodes } = useGLTF("/skull.glb"); // Using the skull model
 
   // Create smooth rotation animation based on scroll
   const { rotation } = useSpring({
@@ -20,9 +21,8 @@ export function Model3D({ scroll = 0 }) {
     meshRef.current.position.y = Math.sin(state.clock.elapsedTime) * 0.1;
   });
 
-  // Placeholder box mesh - replace with your actual 3D model
   return (
-    <animated.mesh ref={meshRef} rotation={rotation} scale={[2, 2, 2]}>
+    <animated.mesh ref={meshRef} rotation={rotation as any} scale={[2, 2, 2]}>
       <boxGeometry args={[1, 1, 1]} />
       <meshStandardMaterial color="#0EA5E9" />
     </animated.mesh>
