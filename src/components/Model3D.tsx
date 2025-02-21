@@ -6,7 +6,7 @@ import { useSpring, animated } from '@react-spring/three';
 
 export function Model3D({ scroll = 0 }) {
   const meshRef = useRef();
-  const { nodes } = useGLTF("/your-3d-model.glb"); // You'll need to add your 3D model file
+  const { nodes } = useGLTF("/skull.glb"); // You'll need to add your 3D model file
 
   // Create smooth rotation animation based on scroll
   const { rotation } = useSpring({
