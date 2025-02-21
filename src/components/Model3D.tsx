@@ -22,9 +22,11 @@ export function Model3D({ scroll = 0 }) {
   });
 
   return (
-    <animated.mesh ref={meshRef} rotation={rotation as any} scale={[2, 2, 2]}>
-      <boxGeometry args={[1, 1, 1]} />
-      <meshStandardMaterial color="#0EA5E9" />
-    </animated.mesh>
+    <animated.group rotation={rotation as any}>
+      <mesh ref={meshRef} scale={[2, 2, 2]}>
+        <boxGeometry args={[1, 1, 1]} />
+        <meshStandardMaterial color="#0EA5E9" />
+      </mesh>
+    </animated.group>
   );
 }

@@ -13,8 +13,6 @@ export function Scene3D({ scroll = 0 }) {
       <directionalLight position={[10, 10, 5]} intensity={1} />
       <PresentationControls
         global
-        config={{ mass: 2, tension: 500 } as any}
-        snap
         rotation={[0, 0.3, 0]}
         polar={[-Math.PI / 3, Math.PI / 3]}
         azimuth={[-Math.PI / 1.4, Math.PI / 2]}
