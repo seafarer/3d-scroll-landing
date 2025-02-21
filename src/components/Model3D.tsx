@@ -2,7 +2,7 @@
 import { useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { useGLTF } from '@react-three/drei';
-import { useSpring, animated } from '@react-spring/three';
+import { animated, useSpring } from '@react-spring/three';
 import * as THREE from 'three';
 
 export function Model3D({ scroll = 0 }) {
@@ -22,11 +22,15 @@ export function Model3D({ scroll = 0 }) {
   });
 
   return (
-    <animated.group rotation={rotation as any}>
-      <mesh ref={meshRef} scale={[2, 2, 2]}>
+    <group>
+      <animated.mesh 
+        ref={meshRef} 
+        scale={[2, 2, 2]} 
+        rotation={rotation as any}
+      >
         <boxGeometry args={[1, 1, 1]} />
         <meshStandardMaterial color="#0EA5E9" />
-      </mesh>
-    </animated.group>
+      </animated.mesh>
+    </group>
   );
 }
